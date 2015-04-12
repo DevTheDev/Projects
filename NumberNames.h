@@ -92,17 +92,42 @@ int getListE2(int stored)
 
 
 //TODO ADD DISPLAY FUNCTION
-void displayHundred(int n)
+void printE6(int n)
 {
-	printf("%s%s", numbers[n], numbers[28]);
+	if(n != 0)
+	{
+		printf("%s%s", numbers[n], numbers[30]);
+	}
 }
-void displayThousand(int n)
+void printE5(int n)
 {
-	printf("%s%s", numbers[n], numbers[29]);
+	if(n != 0)
+	{
+		printf("%s%s%s", numbers[n], numbers[28], numbers[29]);
+	}
 }
-void displayMillion(int n)
+void printE4(int n)//Don't want to print "thousand" on this command, but on printE3
 {
-	printf("%s%s", numbers[n], numbers[30]);
+	if(n == 1 && *numbers[n+1] != 0)
+	{
+		printf("%s%s", numbers[getListE1()], numbers[29]);
+	}
+	printf("%s", numbers[n]);
+}
+void printE3(int n)
+{
+	if(n != 0)
+	{
+		printf("%s", numbers[n]);
+	}
+	if(*numbers[n-1] != 1)
+	{
+		printf("%s", numbers[29]);
+	}
+}
+void printE2(int n)
+{
+
 }
 int powE(unsigned int n)//Because I'm lazy, and don't need a negative one right now
 {
@@ -125,6 +150,22 @@ void displayGeneral(int n)
 		num_storage[i] = sieveGeneral(mod_storage[i], powE(i));//Should assign all values to the proper arrays
 	}
 
+	switch((int) floor(log10f(n)))
+	{
+		case 6:
+			printE6(mod_storage[6]);
+		case 5:
+			printE5(mod_storage[5]);
+		case 4:
+			printE4(mod_storage[4]);
+		case 3:
+			printE3(mod_storage[3]);
+		case 2:
+			printE2(mod_storage[2]);
+		case 1:
+			printE1(mod_storage[1]);
+			break;
+	}
 }
 
 
