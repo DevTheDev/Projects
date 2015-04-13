@@ -24,8 +24,16 @@ int sieveGeneral(int n, int pv)
 	{
 		if(n >= pv)
 		{
-			mod_storage[(int)log10f(pv)-1] = n % pv;
-			return floor(n/pv);
+            if(n % pv >= pow_tens[(int)log10f(pv)-((int)log10f(pv) ? 1 : 0)])
+            {
+                mod_storage[(int)log10f(pv)-((int)log10f(pv) ? 1 : 0)] = n % pv;
+			    return floor(n/pv);
+            }
+            else
+            {
+                mod_storage[(int)log10f(pv)-  1] = 0;
+                return floor(n/pv);
+            }
 		}
 		else
 		{
@@ -68,7 +76,7 @@ int getListE2(int stored)
 	switch(stored)
 	{
 		case 1:
-			getListE1(stored); //Should actually call getListE1
+			getListE1(stored);
 		case 2:
 			return 20;
 		case 3:
@@ -110,7 +118,7 @@ void printE4(int n)//Don't want to print "thousand" on this command, but on prin
 {
 	if(n == 1 && *numbers[n+1] != 0)
 	{
-		printf("%s%s", numbers[getListE1()], numbers[29]);
+		printf("%s%s", numbers[getListE1(n)], numbers[29]);//I think it's n to getList
 	}
 	printf("%s", numbers[n]);
 }
@@ -129,6 +137,8 @@ void printE2(int n)
 {
 
 }
+void printE1(int n)
+{}
 int powE(unsigned int n)//Because I'm lazy, and don't need a negative one right now
 {
 	if(n == 0)
@@ -143,13 +153,13 @@ int powE(unsigned int n)//Because I'm lazy, and don't need a negative one right 
 
 void displayGeneral(int n)
 {
-	mod_storage[(int) floor(log10f(n))] = n;
+	mod_storage[(int) floor(log10f(n))] = n;//Initialze first mod storage to n
 
 	for(int i = floor(log10f(n)); i > 0; i--)
 	{
 		num_storage[i] = sieveGeneral(mod_storage[i], powE(i));//Should assign all values to the proper arrays
 	}
-
+/*
 	switch((int) floor(log10f(n)))
 	{
 		case 6:
@@ -166,6 +176,7 @@ void displayGeneral(int n)
 			printE1(mod_storage[1]);
 			break;
 	}
+    */
 }
 
 
