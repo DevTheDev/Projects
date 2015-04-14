@@ -4,27 +4,21 @@
 
 int main()
 {
-	displayGeneral(11111);
-	/*//sieveGeneral(206, 100);
-	//sieveGeneral(6, 10);
-	//sieveGeneral(5206, 1000);
-	//sieveGeneral(206,10);
-	//sieveGeneral(6,10);
-	mod_storage[3] = 5206;
-	num_storage[3] = sieveGeneral(mod_storage[3], powE(3));
-	//printf("%i", mod_storage[2]);
-	num_storage[2] = sieveGeneral(mod_storage[2], powE(2));
-	num_storage[1] = sieveGeneral(mod_storage[1], powE(1));
-	num_storage[0] = sieveGeneral(mod_storage[0], powE(0));
-	printE6(num_storage[6])*/
-	for(int i = 0; i < 7; i++)
+	int uinpt = 1;
+	while(uinpt != 0)
 	{
-		printf("Storage Test: %i, %i\n", mod_storage[i], num_storage[i]);
+		printf("Enter a number between 0 and 10^7: ");
+		scanf("%i", &uinpt);
+		if(uinpt != 0)
+		{
+			printf("That's ");
+			displayGeneral(uinpt);
+			putchar('\n');
+		}
+		else
+		{
+			printf("Ending Loop. Thank you.\n");
+		}
+		clearStorage();
 	}
-	/*printf("Name: %s", numbers[sieveGeneral(5206,1000)]);
-	printf("%s", numbers[sieveGeneral(206,100)]);
-	printf("%s", numbers[sieveGeneral(06, 10)]);
-	printf("%s", numbers[sieveGeneral(6,1)]);*/
-	printf("Quick Test: %i", powE(0));
-
 }
