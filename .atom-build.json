@@ -1,0 +1,6 @@
+{
+  "cmd": "gcc",
+  "args": ["-std=gnu99","{FILE_ACTIVE_NAME}", "-o", "{FILE_ACTIVE_NAME_BASE}.exe"],
+  "sh": false,
+  "cwd":"{PROJECT_PATH}"
+}

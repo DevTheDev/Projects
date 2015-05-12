@@ -93,6 +93,7 @@ int main()
 		else if(uinpt[0] == 'e' || uinpt[0] == 'E')
 		{
 			printf("Exiting loop.\n");
+			break;
 		}
 		else
 		{
